@@ -7,7 +7,8 @@ app.use(express.json());
 
 // Swagger configs
 const swaggerDocs = swaggerJSDocs({
-  swaggerDefinition: {
+  definition: {
+    openapi: '3.0.0',
     info: {
       title: "Example Swagger automator API",
       version: "1.0.0",
@@ -24,14 +25,24 @@ app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
  * @swagger
  * /:
  *  get:
+ *    summary: get a message
  *    description: return a "ok" message
- *    response:
+ *    tags:
+ *      - Home
+ *    responses:
  *      200:
- *        description: Success
- *
+ *        description: An example for what returns
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                message:
+ *                  type: string
+ *                  example: ok
 */
 app.get("/", (_req, res) => {
-  return res.status(200).send({ message: "ok" });
+  return res.status(200).json({ message: "ok" });123
 });
 
 app.listen(3333);
