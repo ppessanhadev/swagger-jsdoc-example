@@ -19,6 +19,17 @@ const swaggerDocs = swaggerJSDocs({
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 // Routes
+
+/**
+ * @swagger
+ * /:
+ *  get:
+ *    description: return a "ok" message
+ *    response:
+ *      200:
+ *        description: Success
+ *
+*/
 app.get("/", (_req, res) => {
   return res.status(200).send({ message: "ok" });
 });
