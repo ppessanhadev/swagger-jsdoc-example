@@ -13,7 +13,7 @@ const swaggerDocs = swaggerJSDocs({
       version: "1.0.0",
     },
   },
-  apis: ["server.ts"],
+  apis: ["./src/server.ts"],
 });
 
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
